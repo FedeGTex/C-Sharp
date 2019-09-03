@@ -30,7 +30,7 @@ namespace Boligrafo
 
     private void SetTinta(short tinta)
     {
-      
+      if(GetTinta()<=)
     }
   }
 }
