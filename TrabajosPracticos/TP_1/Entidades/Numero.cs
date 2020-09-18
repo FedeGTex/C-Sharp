@@ -17,7 +17,6 @@ namespace Entidades
         {
             set
             {
-                if (ValidarNumero(value) != 0)
                     numero = ValidarNumero(value);
             }
         }
@@ -45,12 +44,12 @@ namespace Entidades
         }
 
 
-        public Numero(double numero)
+        public Numero(double numero) : this(numero.ToString())
         {
-            this.numero = numero;
+
         }
 
-        public Numero(string numero)
+        public Numero(string numero) : this()
         {
             SetNumero = numero;
         }
@@ -148,17 +147,11 @@ namespace Entidades
                         resultado = resultado + numeroBinario[i];
                     }
 
-                    resultado += ' ';
                     for (int j = 0; i < numeroBinario.Length; i++, j++)
                     {
                         resultado = resultado + numeroBinario[i];
                         if (j == 3)
                         {
-                            if (i != numeroBinario.Length - 1)
-                            {
-                                resultado = resultado + ' ';
-                            }
-
                             j = -1;
                         }
                     }
@@ -210,28 +203,55 @@ namespace Entidades
             return cadena;
         }
 
+        /// <summary>
+        /// sobrecarga del operador +
+        /// </summary>
+        /// <param name="n1">objeto Numero 1</param>
+        /// <param name="n2">objeto Numero 2</param>
+        /// <returns>resultado de dicha operacion</returns>
         public static double operator +(Numero n1, Numero n2)
         {
             return n1.numero + n2.numero;
         }
 
+        /// <summary>
+        /// sobrecarga del operador -
+        /// </summary>
+        /// <param name="n1">valor del numero a restar</param>
+        /// <param name="n2">valor del numero que resta</param>
+        /// <returns>resultado de dicha operacion</returns>
         public static double operator -(Numero n1, Numero n2)
         {
             return n1.numero - n2.numero;
         }
 
+        /// <summary>
+        /// sobrecarga del operador *
+        /// </summary>
+        /// <param name="n1">Objeto numero 1</param>
+        /// <param name="n2">objeto Numero 2</param>
+        /// <returns>resultado de dicha operacion</returns>
         public static double operator *(Numero n1, Numero n2)
         {
             return n1.numero * n2.numero;
         }
 
+        /// <summary>
+        /// sobrecarga del operador /
+        /// </summary>
+        /// <param name="n1">objeto Numero 1 dividendo</param>
+        /// <param name="n2">Objeto Numero 2 divisor</param>
+        /// <returns>resultado de dicha operacion</returns>
         public static double operator /(Numero n1, Numero n2)
         {
-
             if (n2.numero == 0)
+            {
                 return double.MinValue;
-
-            return n1.numero / n2.numero;
+            }
+            else
+            {
+                return n1.numero / n2.numero;
+            }
         }
 
     }

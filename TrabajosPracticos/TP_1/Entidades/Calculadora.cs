@@ -30,27 +30,19 @@ namespace Entidades
         /// <returns>el resultado de la operacion</returns>
         public static double Operar(Numero num1, Numero num2, string operador)
         {
-            double resultado = 0;
-            string auxOperador;
-            auxOperador = ValidarOperador(operador);
-
-            if (auxOperador == "+")
+            switch (ValidarOperador(operador))
             {
-                resultado = num1 + num2;
+                case "+":
+                    return num1 + num2;
+                case "-":
+                    return num1 - num2;
+                case "/":
+                    return (num1 / num2);
+                case "*":
+                    return num1 * num2;
+                default:
+                    return 0;
             }
-            else if (auxOperador == "-")
-            {
-                resultado = num1 - num2;
-            }
-            else if (auxOperador == "*")
-            {
-                resultado = num1 * num2;
-            }
-            else if (auxOperador == "/")
-            {
-                resultado = num1 / num2;
-            }
-            return resultado;
         }
     }
 }
